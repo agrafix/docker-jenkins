@@ -1,3 +1,7 @@
+## 0.4.0-DOCKER
+  * Added supervisord
+  * Added docker
+
 ## 0.4.0
   * Upgrade to Jenkins 1.551
   * Simplify exposed volume to /jenkins

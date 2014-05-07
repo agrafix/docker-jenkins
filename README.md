@@ -1,32 +1,40 @@
 # docker-jenkins
 
-Sets up a container with jenkins installed listening on port 8080.
+Sets up a container with jenkins and docker installed, listening on
+port 8080. You then run all your tests inside another docker image - this
+way you don't need to install any build dependencies on your jenkins system.
 
 ## Usage
 
 To run the container, do the following:
 
-    docker run -d -P aespinosa/jenkins
+    docker run -privileged -d -p 8000:8080 agrafix/jenkins-docker
     
     docker ps
     CONTAINER ID        IMAGE                       COMMAND                CREATED             STATUS              PORTS                     NAMES
-    1131d37c38b1        aespinosa/jenkins:latest    java -jar /opt/jenki   12 seconds ago      Up 12 seconds       0.0.0.0:49153->8080/tcp   drunk_fermi
+    b9ebe2581792        agrafix/jenkins-docker:latest   java -jar /opt/jenki   Less than a second ago   Up 1 seconds        0.0.0.0:8000->8080/tcp   angry_mayer
 
-Your jenkins instance is now available by going to http://localhost:49153 .
+Your jenkins instance is now available by going to http://localhost:8000 .
+
+To build a haskell project for example, a possible build script could be:
+
+    docker run agrafix/ghc7.6 /bin/bash -c 'git clone
+    http://github.com/agrafix/funblog && cd funblog && cabal install'
 
 ## Building
 
 To build the image, simply invoke
 
-    docker build github.com/aespinosa/docker-jenkins
+    docker build github.com/agrafix/docker-jenkins
 
 A prebuilt container is also available in the docker index
 
-    docker pull aespinosa/jenkins
+    docker pull agrafix/jenkins-docker
 
 
 ## Author
 
+  * Alexander Thiemann
   * Allan Espinosa (<allan.espinosa@outlook.com>)
   * Gwenn Etourneau
 
