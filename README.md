@@ -21,6 +21,14 @@ To build a haskell project for example, a possible build script could be:
     docker run agrafix/ghc7.6 /bin/bash -c 'git clone
     http://github.com/agrafix/funblog && cd funblog && cabal install'
 
+### Persistent Configuration
+
+By default, JENKINS_HOME is set to /jenkins.  The best way to persist or import configuration is to have a separate data volume for /jenkins.  Below are a few references on data volumes.
+
+  * https://docs.docker.com/userguide/dockervolumes/
+  * http://aespinosa.github.io/blog/2014-03-05-import-jenkins-configuration-to-docker.html
+  * https://github.com/aespinosa/docker-jenkins/blob/master/test/jenkins_test.bats#L3
+
 ## Building
 
 To build the image, simply invoke
@@ -36,7 +44,7 @@ A prebuilt container is also available in the docker index
 
   * Alexander Thiemann
   * Allan Espinosa (<allan.espinosa@outlook.com>)
-  * Gwenn Etourneau
+  * Gwenn Etourneau (<g.etourneau@free.fr>)
 
 ## LICENSE
 
