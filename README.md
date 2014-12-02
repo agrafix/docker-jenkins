@@ -8,7 +8,7 @@ way you don't need to install any build dependencies on your jenkins system.
 
 To run the container, do the following:
 
-    docker run -privileged -d -p 8000:8080 agrafix/jenkins-docker
+    docker run -v /var/run/docker.sock:/var/run/docker.sock -d -p 8000:8080 agrafix/jenkins-docker
     
     docker ps
     CONTAINER ID        IMAGE                       COMMAND                CREATED             STATUS              PORTS                     NAMES
